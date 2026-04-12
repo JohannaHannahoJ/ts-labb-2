@@ -17,6 +17,9 @@ const taskInput = document.getElementById("task") as HTMLInputElement;
 const priorityInput = document.getElementById("priority") as HTMLSelectElement;
 const ul = document.getElementById("todo-list") as HTMLUListElement;
 
+// skriv ut listan
+renderTodos();
+
 // Mata in ny att-göra-sak vid klick
 form.addEventListener("submit", (e) => {
     e.preventDefault();
