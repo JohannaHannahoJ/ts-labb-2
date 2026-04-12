@@ -5,14 +5,6 @@ import './style.css'
 
 const list = new TodoList();
 
-list.addTodo({
-  task: "Test 1",
-  completed: false,
-  priority: 1
-});
+list.addTodo("Test 1", 1);
 
-list.addTodo({
-  task: "Test 2",
-  completed: false,
-  priority: 2
-});
+list.addTodo("Test 2", 2);
