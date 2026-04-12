@@ -33,6 +33,12 @@ export class TodoList {
 
 
         //sedan ngt för att spara till local st.
+
+        
+    }
+    
+    public getTodos(): Todo[] {
+        return this.todos;
     }
 }
 

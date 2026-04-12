@@ -15,8 +15,28 @@
 <body>
   <main>
     <h1>Min att-göra-lista</h1>
-    <p>Här kommmer det inom kort komma en massa innehåll men först ska vi fixa lite grejer.</p>
-    <div id="app"></div>
+
+    <div class="container">
+
+      <section class="todo-form">
+        <form id="todo-form">
+          <input type="text" id="task" placeholder="Lägg till en quest" />
+
+          <select id="priority">
+            <option value="1">Prio 1</option>
+            <option value="2">Prio 2</option>
+            <option value="3">Prio 3</option>
+          </select>
+
+          <button type="submit">Lägg till</button>
+        </form>
+      </section>
+
+      <section class="todo-list">
+        <ul id="todo-list"></ul>
+      </section>
+
+    </div>
   </main>
   <footer>
     <p>© joha2102@student.miun.se</p>
