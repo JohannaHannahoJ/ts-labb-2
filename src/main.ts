@@ -5,11 +5,10 @@ import './style.css'
 // skapar instans av Todolist
 const list = new TodoList();
 
-// Läser in alla att-göra objekt från localStorage till listan
+// Läser in todos från localStorage
 const saved = LocalStorageUtil.loadTodos();
-saved.forEach(todo => {
-    list.addTodo(todo.task, todo.priority);
-});
+// skapar en lista
+list.setTodos(saved);
 
 // hämta DOM-element
 const form = document.getElementById("todo-form") as HTMLFormElement;
@@ -42,6 +41,7 @@ form.addEventListener("submit", (e) => {
 
     // uppdatera lista
     renderTodos();
+
     // rensa formulär
     form.reset();
 });
@@ -50,14 +50,37 @@ form.addEventListener("submit", (e) => {
 function renderTodos() {
     ul.innerHTML = ""; // blåser ev tidigare lista
 
-    // Hämtar alla todos från class
     const todos = list.getTodos();
 
     // loopar igenom och skriver ut HTML för varje todo
-    todos.forEach(todo => {
+    todos.forEach((todo, index) => {
         const li = document.createElement("li");
 
-        li.textContent = `${todo.task} (prio ${todo.priority})`;
-        ul.appendChild(li);
+        //Checkbox-element att klicka i vid avklarad todo
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = todo.completed;
+
+        // eventlyssnare på checkbox
+        checkbox.addEventListener("change", () => {
+            list.markTodoCompleted(index);
+            LocalStorageUtil.saveTodos(list.getTodos());
+            renderTodos();
+        });
+
+        // skriv ut texten
+        const text = document.createElement("span");
+        text.textContent = `${todo.task} (prio ${todo.priority})`;
+
+        // text överstruken om klar
+        if (todo.completed) {
+            text.classList.add("completed");
+        }
+
+        // lägg till checkbox och text i li
+        li.appendChild(checkbox);
+        li.appendChild(text);
+
+        ul.appendChild(li); // lägg till i listan
     });
 }

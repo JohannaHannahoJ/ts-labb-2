@@ -86,10 +86,27 @@ button {
   padding: 1rem;
 }
 
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: gainsboro;
+}
+
 .todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
   padding: 0.5rem;
   font-size: 130%;
   border-bottom: 1px solid gainsboro;
+}
+
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: #390D02;
+  opacity: 0.7;
 }
 
 footer {
